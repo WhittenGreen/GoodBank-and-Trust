@@ -161,11 +161,11 @@ app.get('/account/logout', function (req, res) {
     auth.signOut()
         .then(function() {
             // Sign-out successful.
-            console.log('good logout');
+            console.log('successful logout');
             res.send({"error": ''});
         })
         .catch(function(error) {
-            console.log('bad logout');
+            console.log('logout error');
             // An error happened
             res.send({"error": error});
         });
