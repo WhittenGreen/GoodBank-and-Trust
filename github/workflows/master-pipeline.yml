@@ -1,0 +1,25 @@
+name: Master Pipeline
+on:
+  push:
+    branches:
+      - master
+jobs:
+  Build:
+    name: CI/CD
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: VM Setup
+      uses: actions/checkout@v2
+    
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    
+    - name: Packages Installation
+      run: npm install && npm install -g serverless
+    - name: Serverless Configuratio
+      run: serverless config credentials --stage dev --provider aws         --key ${{ secrets.V}} --secret ${{ secrets.K }}
+    - name: Serverless Deployment
+      run: serverless deploy --stage dev --region us-east-1
