@@ -4,6 +4,7 @@ var cors = require('cors');
 var dal = require('./dal.js');
 const admin   = require('./admin');
 const firebase = require('firebase');
+const path = require("path");
 app.use(express.static('public'));
 app.use(cors());
 
@@ -171,8 +172,15 @@ app.get('/account/logout', function (req, res) {
         });
 });
 
+// Serve static files if in production
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("./public"));
+  
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "public", "index.html"));
+    });
+  }
 
-
-var port = 3004;
+var port = 3005;
 app.listen(port);
 console.log(`Running on port ${port}`);
