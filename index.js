@@ -5,6 +5,7 @@ var dal = require('./dal.js');
 const admin   = require('./admin');
 const firebase = require('firebase');
 const path = require("path");
+const port = process.env.PORT || 3005;
 app.use(express.static('public'));
 app.use(cors());
 
@@ -181,6 +182,6 @@ if (process.env.NODE_ENV === "production") {
     });
   }
 
-var port = 3005;
-app.listen(port);
-console.log(`Running on port ${port}`);
+  app.listen(port, () =>
+  console.log(`Server running on port http://localhost:${port}`)
+);
