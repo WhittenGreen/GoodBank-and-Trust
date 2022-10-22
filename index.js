@@ -2,12 +2,18 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 var dal = require('./dal.js');
+const corsOptions = require("./allowOrigins")
 const admin   = require('./admin');
 const firebase = require('firebase');
 const path = require("path");
+const credentials = require('./credentials.js');
 const port = process.env.PORT || 3005;
+
+//Middleware
 app.use(express.static('public'));
-app.use(cors());
+app.use(credentials);
+app.use(cors(corsOptions));
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAyzXtZd8w1FxfEp_KeNqfXlVieDY8MvG0",
