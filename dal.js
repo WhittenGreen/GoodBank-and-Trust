@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://wgreen24:dbuserpass@whittengreengoodbank.n5sbo25.mongodb.net/?retryWrites=true&w=majority';
+const url = 'mongodb+srv://wgreen24:dbuserpass@whittengreengoodbank.n5sbo25.mongodb.net/AtlasCluster?retryWrites=true&w=majority';
 let db = null;
 
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
